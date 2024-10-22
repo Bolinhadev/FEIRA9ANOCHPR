@@ -1,340 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feira de Ciências - CHPR</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(45deg, #ff4b4b, #ff7878);
-            padding: 20px;
-            text-align: center;
-            color: #fff;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 150px 20px 50px 20px;
-            background: linear-gradient(135deg, #ff4b4b, #ffffff);
-            color: #fff;
-            position: relative;
-            z-index: 1;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .hero h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 3.5rem;
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .language-selector-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #ff4b4b;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .language-selector-overlay select {
-            padding: 10px 15px;
-            font-size: 1.5rem;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-
-        section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-
-        .projects {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .project {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-            margin: 20px;
-            padding: 20px;
-            width: 300px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        .project h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #ff4b4b;
-        }
-
-        .project p {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .project:hover {
-            transform: translateY(-10px);
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-        }
-
-        footer {
-            background-color: #ff4b4b;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            font-size: 1rem;
-        }
-
-        .text-short {
-            display: block;
-        }
-
-        .text-long {
-            display: none;
-        }
-
-        .expand-btn {
-            cursor: pointer;
-            color: #ff4b4b;
-            text-decoration: underline;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeOutOverlay {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Feira de Ciências - CHPR 9º Ano - Colégio Suíço Brasileiro, Foz do Iguaçu">
+  <title>Feira de Ciências - CHPR 9º Ano</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Lora', serif;
+    }
+    .section-header {
+      color: #b91c1c;
+    }
+    .custom-btn {
+      background-color: #b91c1c;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .custom-btn:hover {
+      background-color: #9b1b1b;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900">
 
-    <header>Feira de Ciências - CHPR</header>
-
-    <!-- Seletor de Idioma Overlay -->
-    <div class="language-selector-overlay" id="language-overlay">
-        <select id="language-select" onchange="changeLanguage()">
-            <option value="pt">Português</option>
-            <option value="en">Inglês</option>
-            <option value="fr">Francês</option>
-            <option value="de">Alemão</option>
-        </select>
+  <!-- Navbar -->
+  <nav class="bg-white shadow-lg py-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#" class="text-3xl font-bold text-red-700">Feira de Ciências</a>
+      <ul class="hidden md:flex space-x-8 text-lg font-semibold">
+        <li><a href="#hero" class="hover:text-red-600 transition">Início</a></li>
+        <li><a href="#projetos" class="hover:text-red-600 transition">Projetos</a></li>
+        <li><a href="#faq" class="hover:text-red-600 transition">Perguntas</a></li>
+      </ul>
+      <button class="md:hidden block text-2xl text-red-700">☰</button>
     </div>
+  </nav>
 
-    <div class="hero" id="hero-section">
-        <h1 id="hero-title">Explore a Ciência na Foz do Iguaçu</h1>
-        <p id="hero-description">Bem-vindo à Feira de Ciências do Colégio Suíço-Brasileiro de Curitiba</p>
+  <!-- Hero Section -->
+  <section id="hero" class="relative h-screen bg-red-600 text-white flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-50" style="background-image: url('https://via.placeholder.com/1920x1080.png?text=Foz+do+Iguaçu');"></div>
+    <div class="relative text-center">
+      <h1 class="text-6xl font-bold mb-4">Feira de Ciências</h1>
+      <p class="text-2xl font-light">CHPR 9º Ano - Colégio Suíço Brasileiro</p>
+      <a href="#projetos" class="mt-8 inline-block custom-btn px-8 py-3 rounded-full text-lg font-semibold shadow-lg">Conheça os Projetos</a>
     </div>
+  </section>
 
-    <section id="projects-section">
-        <h2 id="projects-title">Projetos</h2>
-        <div class="projects" id="projects-container"></div>
-    </section>
+  <!-- Seção de Projetos -->
+  <section id="projetos" class="py-20 bg-gray-50">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-12 section-header">Projetos da Feira</h2>
 
-    <footer>
-        © 2024 Feira de Ciências CHPR - Colégio Suíço-Brasileiro de Curitiba
-    </footer>
+      <!-- Projeto 1 -->
+      <div class="md:flex items-center mb-16">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+1" alt="Projeto 1" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pl-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 1: Título do Projeto 1</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-    <script>
-        const projectsData = {
-            "pt": [
-                {
-                    "title": "A Biodiversidade de Foz do Iguaçu",
-                    "textShort": "Descubra a biodiversidade única da região.",
-                    "textLong": "Foz do Iguaçu é um dos lugares com maior biodiversidade do planeta. Suas florestas abrigam uma vasta variedade de espécies de plantas e animais. O estudo desta biodiversidade é essencial para a preservação do meio ambiente.",
-                    "image": "https://via.placeholder.com/300x200"
-                },
-                {
-                    "title": "A Hidrelétrica de Itaipu",
-                    "textShort": "A maior hidrelétrica do mundo, localizada no Brasil.",
-                    "textLong": "A usina de Itaipu é a maior hidrelétrica do mundo em termos de produção de energia. Sua estrutura impressionante e os avanços tecnológicos empregados fazem dela um marco na engenharia mundial.",
-                    "image": "https://via.placeholder.com/300x200"
-                }
-            ],
-            "en": [
-                {
-                    "title": "The Biodiversity of Foz do Iguaçu",
-                    "textShort": "Discover the unique biodiversity of the region.",
-                    "textLong": "Foz do Iguaçu is one of the places with the greatest biodiversity on the planet. Its forests house a vast variety of plant and animal species. Studying this biodiversity is essential for environmental preservation.",
-                    "image": "https://via.placeholder.com/300x200"
-                },
-                {
-                    "title": "Itaipu Hydroelectric Power Plant",
-                    "textShort": "The largest hydroelectric power plant in the world, located in Brazil.",
-                    "textLong": "The Itaipu plant is the largest hydroelectric power plant in the world in terms of energy production. Its impressive structure and the technological advances used make it a landmark in global engineering.",
-                    "image": "https://via.placeholder.com/300x200"
-                }
-            ],
-            "fr": [
-                {
-                    "title": "La Biodiversité de Foz do Iguaçu",
-                    "textShort": "Découvrez la biodiversité unique de la région.",
-                    "textLong": "Foz do Iguaçu est l'un des endroits ayant la plus grande biodiversité de la planète. Ses forêts abritent une vaste variété d'espèces végétales et animales. L'étude de cette biodiversité est essentielle pour la préservation de l'environnement.",
-                    "image": "https://via.placeholder.com/300x200"
-                },
-                {
-                    "title": "La Centrale Hydroélectrique d'Itaipu",
-                    "textShort": "La plus grande centrale hydroélectrique du monde, située au Brésil.",
-                    "textLong": "La centrale d'Itaipu est la plus grande centrale hydroélectrique du monde en termes de production d'énergie. Sa structure impressionnante et les avancées technologiques utilisées en font un jalon de l'ingénierie mondiale.",
-                    "image": "https://via.placeholder.com/300x200"
-                }
-            ],
-            "de": [
-                {
-                    "title": "Die Biodiversität von Foz do Iguaçu",
-                    "textShort": "La plus grande centrale hydroélectrique du monde, située au Brésil.",
-                    "textLong": "Foz do Iguaçu ist einer der Orte mit der größten Biodiversität auf dem Planeten. Seine Wälder beherbergen eine Vielzahl von Pflanzen- und Tierarten. Das Studium dieser Biodiversität ist entscheidend für den Umweltschutz.",
-                    "image": "https://via.placeholder.com/300x200"
-                },
-                {
-                    "title": "Das Itaipu-Wasserkraftwerk",
-                    "textShort": "Das größte Wasserkraftwerk der Welt, gelegen in Brasilien.",
-                    "textLong": "Das Itaipu-Wasserkraftwerk ist das größte Wasserkraftwerk der Welt in Bezug auf die Energieproduktion. Seine beeindruckende Struktur und die eingesetzten technologischen Fortschritte machen es zu einem Meilenstein der weltweiten Ingenieurskunst.",
-                    "image": "https://via.placeholder.com/300x200"
-                }
-            ]
-        };
+      <!-- Projeto 2 -->
+      <div class="md:flex items-center mb-16 flex-row-reverse">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+2" alt="Projeto 2" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pr-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 2: Título do Projeto 2</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-        // Função para renderizar projetos
-        function renderProjects(lang) {
-            const projectsContainer = document.getElementById('projects-container');
-            projectsContainer.innerHTML = ''; // Limpar projetos anteriores
+      <!-- Projeto 3 -->
+      <div class="md:flex items-center mb-16">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+3" alt="Projeto 3" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pl-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 3: Título do Projeto 3</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-            projectsData[lang].forEach(project => {
-                const projectDiv = document.createElement('div');
-                projectDiv.classList.add('project');
-                projectDiv.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}">
-                    <h3>${project.title}</h3>
-                    <p class="text-short">${project.textShort}</p>
-                    <p class="text-long hidden">${project.textLong}</p>
-                    <span class="expand-btn" onclick="toggleText(this)">Leia mais</span>
-                `;
-                projectsContainer.appendChild(projectDiv);
-            });
-        }
+      <!-- Projeto 4 -->
+      <div class="md:flex items-center mb-16 flex-row-reverse">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+4" alt="Projeto 4" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pr-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 4: Título do Projeto 4</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-        // Função para alternar entre texto curto e longo
-        function toggleText(btn) {
-            const shortText = btn.previousElementSibling.previousElementSibling;
-            const longText = btn.previousElementSibling;
-            if (longText.classList.contains('hidden')) {
-                shortText.classList.add('hidden');
-                longText.classList.remove('hidden');
-                btn.textContent = 'Leia menos';
-            } else {
-                shortText.classList.remove('hidden');
-                longText.classList.add('hidden');
-                btn.textContent = 'Leia mais';
-            }
-        }
+      <!-- Projeto 5 -->
+      <div class="md:flex items-center mb-16">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+5" alt="Projeto 5" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pl-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 5: Título do Projeto 5</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-        // Função para mudar o idioma
-        function changeLanguage() {
-            const selectedLang = document.getElementById('language-select').value;
+      <!-- Projeto 6 -->
+      <div class="md:flex items-center flex-row-reverse">
+        <img src="https://via.placeholder.com/600x400.png?text=Projeto+6" alt="Projeto 6" class="w-full md:w-1/2 rounded-lg shadow-lg mb-6 md:mb-0">
+        <div class="md:w-1/2 md:pr-10">
+          <h3 class="text-3xl font-bold section-header mb-4">Projeto 6: Título do Projeto 6</h3>
+          <p class="text-gray-700 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Curabitur nec odio ipsum. Integer vehicula massa ut lorem pellentesque, in fermentum mauris placerat.</p>
+        </div>
+      </div>
 
-            // Atualizar conteúdo textual
-            const content = {
-                "pt": {
-                    "heroTitle": "Explore a Ciência na Foz do Iguaçu",
-                    "heroDescription": "Bem-vindo à Feira de Ciências do Colégio Suíço-Brasileiro de Curitiba",
-                    "projectsTitle": "Projetos"
-                },
-                "en": {
-                    "heroTitle": "Explore Science in Foz do Iguaçu",
-                    "heroDescription": "Welcome to the Science Fair of the Swiss-Brazilian School of Curitiba",
-                    "projectsTitle": "Projects"
-                },
-                "fr": {
-                    "heroTitle": "Explorez la Science à Foz do Iguaçu",
-                    "heroDescription": "Bienvenue à la Foire Scientifique de l'École Suisse-Brésilienne de Curitiba",
-                    "projectsTitle": "Projets"
-                },
-                "de": {
-                    "heroTitle": "Erkunden Sie die Wissenschaft in Foz do Iguaçu",
-                    "heroDescription": "Willkommen zur Wissenschaftsmesse der Schweizerisch-Brasilianischen Schule Curitiba",
-                    "projectsTitle": "Projekte"
-                }
-            };
+    </div>
+  </section>
 
-            document.getElementById('hero-title').textContent = content[selectedLang].heroTitle;
-            document.getElementById('hero-description').textContent = content[selectedLang].heroDescription;
-            document.getElementById('projects-title').textContent = content[selectedLang].projectsTitle;
+  <!-- Seção de Perguntas Frequentes -->
+  <section id="faq" class="py-20 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center section-header mb-12">Perguntas Frequentes</h2>
 
-            // Renderizar projetos
-            renderProjects(selectedLang);
-
-            // Aplicar fade-out na overlay
-            document.getElementById('language-overlay').style.animation = 'fadeOutOverlay 1s forwards';
-            setTimeout(() => {
-                document.getElementById('language-overlay').style.display = 'none';
-            }, 1000);
-        }
-
-        // Inicialização
-        window.onload = () => {
-            // Definir idioma padrão como português
-            document.getElementById('language-select').value = 'pt';
-            renderProjects('pt');
-        };
-    </script>
-</body>
-</html>
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-2xl font-bold section-header">1. Qual é o motivo da
